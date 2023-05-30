@@ -104,7 +104,7 @@ plt.show()
 # %%
 # ======PART 4======
 my_height = 69
-my_weight = 117
-model.predict_proba([[my_height, my_weight]])
-model.predict([[my_height, my_weight]])
+my_weight = 112
+print(model.predict_proba([[my_height, my_weight]]).round(2))
+print("Alex is a " + model.predict([[my_height, my_weight]]))
 # %%
