@@ -6,7 +6,8 @@ import seaborn as sns  # Statistical data visualization
 import sklearn  # Machine learning library (Tier 1)
 from sklearn.linear_model import LogisticRegression  # Decision making function
 import matplotlib.pyplot as plt  # Plots data into a graph
-
+import warnings
+warnings.filterwarnings('ignore')
 # Types of machine learning (increase in difficulty)
 # 1) Supervised learning
 # To predict the label of instances based on a learned relationship.
@@ -103,8 +104,16 @@ plt.show()
 
 # %%
 # ======PART 4======
-my_height = 69
-my_weight = 112
-print(model.predict_proba([[my_height, my_weight]]).round(5))
-print("Alex is a " + model.predict([[my_height, my_weight]]))
+while True:
+    my_height = int(input("Your height (inches): "))
+    my_weight = int(input("Your weight (pounds): "))
+    predicted_probabilities = model.predict_proba([[my_height, my_weight]])
+    chance_female = round(float(np.format_float_positional(predicted_probabilities[0][0] * 100, 5)), 4)
+    chance_male = round(float(np.format_float_positional(predicted_probabilities[0][1] * 100, 5)), 4)
+    predicted_gender = model.predict([[my_height, my_weight]])[0]
+    print(f"Your height: \t\t{my_height} inches")
+    print(f"Your weight: \t\t{my_weight} pounds")
+    print(f"% Chance of Female: \t{chance_female:07.4f}%")
+    print(f"% Chance of Male: \t{chance_male:07.4f}%")
+    print(f"Predicted Gender: \t{predicted_gender}\n")
 # %%
