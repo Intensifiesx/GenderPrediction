@@ -105,8 +105,8 @@ plt.show()
 # %%
 # ======PART 4======
 while True:
-    my_height = int(input("Your height (inches): "))
-    my_weight = int(input("Your weight (pounds): "))
+    my_height = float(input("Your height (inches): "))
+    my_weight = float(input("Your weight (pounds): "))
     predicted_probabilities = model.predict_proba([[my_height, my_weight]])
     chance_female = round(float(np.format_float_positional(predicted_probabilities[0][0] * 100, 5)), 4)
     chance_male = round(float(np.format_float_positional(predicted_probabilities[0][1] * 100, 5)), 4)
